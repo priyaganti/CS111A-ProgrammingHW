@@ -1,0 +1,61 @@
+Script started on Sun 04 Mar 2012 09:43:43 AM PST
+[pgant001@hills cs111a]$ cat AverageTestScore.java
+/** 
+This Program accepts the test scores from the user & calculates the 
+Average.
+
+Priyanka Ganti
+CS 111A, Section 002
+Lab 1
+February 29, 2012
+*/
+
+ import java.util.Scanner; // Needed for the Scanner Class
+ public class AverageTestScore
+ {
+   public static void main(String[] args)
+   {
+      float test1;
+      float test2;
+      float test3;
+      float test4;
+      float test5;
+      float total;
+      float average;
+     
+      // Create a Scanner object to read input.
+      Scanner Keyboard = new Scanner(System.in);
+ 
+      // Get the Test Scores 1-5.
+      System.out.print("Test1: ");
+      test1 = Keyboard.nextFloat();
+      System.out.print("Test2: ");
+      test2 = Keyboard.nextFloat();
+      System.out.print("Test3: ");
+      test3 = Keyboard.nextFloat();
+      System.out.print("Test4: ");
+      test4 = Keyboard.nextFloat();
+      System.out.print("Test5: ");
+      test5 = Keyboard.nextFloat();
+      System.out.println();
+
+     // Calculating Average.
+      total = (test1+test2+test3+test4+test5);
+      average = total/5;
+    
+    // Display the calculated average. 
+      System.out.println("Average Test Score: "+ average);
+    }
+ }
+[pgant001@hills cs111a]$ java AverageTestScore
+Test1: 87
+Test2: 83
+Test3: 94
+Test4: 91
+Test5: 86
+
+Average Test Score: 88.2
+[pgant001@hills cs111a]$ exit
+exit
+
+Script done on Sun 04 Mar 2012 09:45:22 AM PST

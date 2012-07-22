@@ -1,0 +1,132 @@
+Script started on Wed 16 May 2012 07:58:26 AM PDT
+priya@kalyani: ~/Desktop priya@kalyani:~/Desktop$ cat ChargeAccountValidation.java
+import java.util.Scanner; //Needed for the Scanner class.
+
+/**
+This program accepts charge account number from the user 
+and determines whether it is valid by comparing it to
+given list of valid charge account numbers.
+This program also shows the use of SequentialSearch.
+
+Priyanka Ganti
+CS 111A, Section 002
+Lab 5
+May 15, 2012
+
+ */
+
+public class ChargeAccountValidation 
+{
+	public static void main(String[] args)
+	{ 
+		int accountNumber;// holds the value of account number given by user.
+		char answer; // holds the character value taken from input.
+		String input; // holds the value input from the user.
+		
+		// create a Scanner object to read input.
+		Scanner Keyboard = new Scanner(System.in);
+		
+       // uses a do-while loop to test the condition.
+		do {
+			// get the Account Number.
+			System.out.print("Enter a charge account number: ");
+			accountNumber = Keyboard.nextInt();// stores the account number
+			
+			if (isValid(accountNumber)) // this calls the method isValid and also checks if it is true or false.
+			{
+				System.out.println(accountNumber + " is a valid charge account number.");
+			}
+			else {
+				System.out.println(accountNumber + " is not a valid charge account number.");
+			}
+			//consume the remaining newline.
+			Keyboard.nextLine();
+			
+			System.out.print("Would you like to enter another charge account number (y/n)? ");
+			input = Keyboard.nextLine(); // stores the input string entered.
+			answer = input.charAt(0);// stores the character value.
+		} while (answer == 'y');  // repeat this when the user enters y. 	 
+	}
+/**
+ * The isValid method receives account number as parameter
+   calls the sequential search method and
+   returns true if the number is valid, otherwise false. 
+   @param accountNumber The number accepted from the user.
+   @return The boolean value True if the number is valid or else return false.
+ */
+
+	public static boolean isValid(int accountNumber)
+	{   
+		// This is an array of all the Valid Account Numbers.
+	
+		int[] validAccountNumber = { 5658845, 8080152, 1005231, 4520125, 4562555, 6545231, 7895122, 5552012, 3852085, 8777541, 5050552, 7576651, 8451277, 7825877, 7881200, 1302850, 1250255, 4581002 };
+		int results;// stores the value of the account 
+		
+		// calling the method sequentialSearch.
+		results = sequentialSearch(validAccountNumber, accountNumber);
+		
+		if (results == -1)// when the value of results is stored as -1 then return false. Else return true.
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
+	/**
+	      The sequentialSearch method searches an array for
+	      a value.
+	      @param array The array to search.
+	      @param value The value to search for.
+	      @return The subscript of the value if found in the
+	              array, otherwise -1.
+	 */
+
+	public static int sequentialSearch(int[] array,
+			int value)
+	{
+		int index;        // Loop control variable
+		int element;      // Element the value is found at
+		boolean found;    // Flag indicating search results
+
+		// Element 0 is the starting point of the search.
+		index = 0;
+
+		// Store the default values element and found.
+		element = -1;
+		found = false;
+
+		// Search the array.
+		while (!found && index < array.length)
+		{
+			if (array[index] == value)
+			{
+				found = true;
+				element = index;
+			}
+			index++;
+		}
+
+		return element;
+	}
+}
+priya@kalyani: ~/Desktop priya@kalyani:~/Desktop$ javac ChargeAccountValidation.java 
+priya@kalyani: ~/Desktop priya@kalyani:~/Desktop$ java ChargeAccountValidation 
+Enter a charge account number: 1234567
+1234567 is not a valid charge account number.
+Would you like to enter another charge account number (y/n)? y
+Enter a charge account number: 5050552
+5050552 is a valid charge account number.
+Would you like to enter another charge account number (y/n)? y
+Enter a charge account number: 4581002
+4581002 is a valid charge account number.
+Would you like to enter another charge account number (y/n)? y
+Enter a charge account number: 5658845
+5658845 is a valid charge account number.
+Would you like to enter another charge account number (y/n)? n
+priya@kalyani: ~/Desktop priya@kalyani:~/Desktop$ exit
+exit
+
+Script done on Wed 16 May 2012 08:00:26 AM PDT

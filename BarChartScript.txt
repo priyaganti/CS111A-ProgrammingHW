@@ -1,0 +1,116 @@
+Script started on Wed 25 Apr 2012 07:38:04 AM PDT
+[pgant001@hills cs111a]$ cat BarChart.java
+import java.util.Scanner;//Needed for the Scanner class.
+
+/**
+This program asks the user for the day sales of 5 different stores
+and makes a bar chart out of it.
+
+
+Priyanka Ganti
+CS 111A, Section 002
+Lab 3
+April 24, 2012
+
+ */
+
+public class BarChart
+{
+	public static void main(String[] args) 
+	{
+		int input;// holds the value of input given by user.
+		String store1 = "";// holds the value of store1 in bar chart.
+		String store2 = "";// holds the value of store2 in bar chart.
+		String store3 = "";// holds the value of store3 in bar chart.
+		String store4 = "";// holds the value of store4 in bar chart.
+		String store5 = "";// holds the value of store5 in bar chart.
+
+		// Create a Scanner object to read input.
+		Scanner keyboard = new Scanner(System.in);
+
+		for (int store = 1; store < 6; store++) // Used to get exactly 5 store values.
+		{
+			while (true) // for every true value used in for loop.
+			{
+				// used to get input from the user & store its value.
+				System.out.print("Enter today's sales for store " + store + " : ");
+				input = keyboard.nextInt();
+
+				// checks for the range & alerts the user to enter values in the range. 
+				if (input % 100 != 0 || input < 0 || input > 4000) 
+				{
+					System.out.println("Invalid sales amount: " + input);
+					System.out.println("Sales must be multiple of" +
+							"100 in range 0-4000, inclusive.");
+					continue; // continues the whole loop until the logic is false.
+				}
+				input = input / 100;
+				String stars = "";
+				for (int num = 0; num < input; num++) //checking for number of stars
+				{
+					stars = stars + "*";
+				}
+				switch (store) 
+				{
+				case 1:
+					store1 = stars;
+					break;
+				case 2:
+					store2 = stars;
+					break;
+				case 3:
+					store3 = stars;
+					break;
+				case 4:
+					store4 = stars;
+					break;
+				case 5:
+					store5 = stars;
+					break;
+				}
+				break;// to break out of the while loop.
+			}
+		}
+		// Used to display the Bar Chart.
+		System.out.println();
+		System.out.println("SALES BAR CHART");
+		System.out.println("(Each * = $100)");
+		System.out.println("Store1: " + store1);
+		System.out.println("Store2: " + store2);
+		System.out.println("Store3: " + store3);
+		System.out.println("Store4: " + store4);
+		System.out.println("Store5: " + store5);
+
+	}
+}
+[pgant001@hills cs111a]$ javac BarChart.java
+[pgant001@hills cs111a]$ java BarChart
+Enter today's sales for store 1 : 4100
+Invalid sales amount: 4100
+Sales must be multiple of100 in range 0-4000, inclusive.
+Enter today's sales for store 1 : 1010
+Invalid sales amount: 1010
+Sales must be multiple of100 in range 0-4000, inclusive.
+Enter today's sales for store 1 : -100
+Invalid sales amount: -100
+Sales must be multiple of100 in range 0-4000, inclusive.
+Enter today's sales for store 1 : 1000
+Enter today's sales for store 2 : 1200
+Enter today's sales for store 3 : 1800
+Enter today's sales for store 4 : 800
+Enter today's sales for store 5 : 1901
+Invalid sales amount: 1901
+Sales must be multiple of100 in range 0-4000, inclusive.
+Enter today's sales for store 5 : 1900
+
+SALES BAR CHART
+(Each * = $100)
+Store1: **********
+Store2: ************
+Store3: ******************
+Store4: ********
+Store5: *******************
+[pgant001@hills cs111a]$ exit
+exit
+
+Script done on Wed 25 Apr 2012 07:40:29 AM PDT

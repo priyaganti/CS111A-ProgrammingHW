@@ -1,0 +1,123 @@
+Script started on Mon 07 May 2012 07:09:32 AM PDT
+priya@kalyani:~$ cat AreaRectangle.java
+import java.util.Scanner; // Needed for the Scanner Class
+/**
+This program Calculates and Displays the Area of a Reactangle
+using Methods, by taking the Length and Width from the User.
+
+Priyanka Ganti
+CS 111A, Section 002
+Lab 4
+May 06, 2012
+
+ */
+
+public class AreaRectangle
+{
+	public static void main(String[] args)
+	{
+		double length,    // The rectangle's length
+		width,     // The rectangle's width
+		area;      // The rectangle's area
+
+		// Get the rectangle's length from the user.
+		length = getLength();
+
+		// Get the rectangle's width from the user.
+		width = getWidth();
+
+		// Get the rectangle's area.
+		area = getArea(length, width);
+
+		// Display the rectangle data.
+		displayData(length, width, area);
+	}
+
+	/** 
+  The getLength method accepts length of the rectangle
+  from the user. The value is returned.
+  @param length The rectangle's Length.
+  @return The length accepted from the user.
+	 */
+	public static double getLength()
+	{   
+		double length; // to hold the value of length
+
+		//Create a Scanner object to read input.
+		Scanner Keyboard = new Scanner(System.in);
+
+		// prompts the user to enter the length.
+		System.out.print("Enter the rectangle's length: ");
+		length = Keyboard.nextDouble(); // holds the value of length.
+
+		//Returns the value of length entered by user.
+		return length;
+	}
+
+	/**
+  The getWidth method accepts width of the rectangle
+  from the user. The value is returned.
+  @param width The rectangle's Width. 
+  @return The width accepted from the user.
+	 */
+
+	public static double getWidth()
+	{
+		double width; //to hold the value of width.
+
+		//Create a Scanner object to read input.
+		Scanner Keyboard = new Scanner(System.in);
+
+		//prompts the user to enter the width.
+		System.out.print("Enter the rectangle's width: ");
+		width = Keyboard.nextDouble();// holds the value of width.
+
+		//Returns the value of width entered by user.
+		return width;
+	}
+
+	/**
+  The getArea method accepts length and width of the rectangle
+  and calculates the area. The area of rectangle is returned.
+  @param length The rectangle's Length.
+  @param width The rectangle's Width. 
+  @return The area calculated.
+	 */
+
+	public static double getArea(double length, double width)
+	{
+		double area; // to hold the value of area
+		area = length*width; // logic for calculating the Area
+
+		//Returns the value of the Area calculated.
+		return area;
+	}
+
+	/**
+  The displayData method accepts Length,Width and Area of the
+  rectangle and display their values. No value is returned.
+  @param length The rectangle's Length.
+  @param width The rectangle's Width.
+  @param area The rectangle's Area.
+	 */
+
+	public static void displayData(double length, double width, double area)
+	{
+		System.out.println(); // for an extra new line
+		System.out.println("Rectangle length: "+ length); // displays length of the rectangle.
+		System.out.println("Rectangle width: "+ width); // displays width of the rectangle.
+		System.out.println("Rectangle area: "+ area); // displays area of the rectangle.
+	}
+}
+priya@kalyani:~$ javac AreaRectangle.java 
+priya@kalyani:~$ java AreaRectangle 
+Enter the rectangle's length: 3.5
+Enter the rectangle's width: 2.5
+
+Rectangle length: 3.5
+Rectangle width: 2.5
+Rectangle area: 8.75
+priya@kalyani:~$ exit
+exit
+
+Script done on Mon 07 May 2012 07:10:19 AM PDT

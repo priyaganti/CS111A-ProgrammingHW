@@ -1,0 +1,116 @@
+Script started on Sun 08 Apr 2012 06:25:30 PM PDT
+[pgant001@hills ~]$ cat TimeCalculator.java
+import java.util.Scanner; // Needed for the Scanner class
+import java.text.DecimalFormat; // Needed for the DecimalFormat class
+/** 
+
+This Program accepts the number of seconds from the user & calculates the  
+Time in minutes or hours or days based on the seconds entered.
+
+
+Priyanka Ganti
+CS 111A, Section 002
+Lab 2
+April 8, 2012
+
+*/
+
+public class TimeCalculator 
+{
+  public static void main(String[]args)
+  {
+    // Declaring Conversion factors as Named constants 
+    final int SECONDS_PERMIN = 60; // Declares number of seconds per minute.
+    final int SECONDS_PERHOUR = SECONDS_PERMIN * SECONDS_PERMIN; // Declares number of seconds per hour.
+    final int SECONDS_PERDAY = SECONDS_PERHOUR * 24; // Declares number of seconds per day.
+    
+    int seconds; // Declares number of seconds taken as input. 
+    float minutes; // Declares number of minutes.
+    float hours; // Declares number of hours.
+    float days; // Declares number of days.
+
+  // Create a DecimalFormat object to display 2 digits after decimal.
+     DecimalFormat formatter = new DecimalFormat("# 0.00");
+
+  // Create a Scanner object to read input.
+     Scanner Keyboard = new Scanner (System.in);
+
+  // Get the seconds from user.
+     System.out.print("Enter number of seconds: ");
+     seconds = Keyboard.nextInt();
+
+  // Using if-else-if to determine the minutes,hours & days from given seconds 
+     if(seconds < 0)
+         {
+            System.out.println("The number of seconds entered may not be less than zero.");
+            System.out.println("No conversion was performed");
+         }
+     else if(seconds < SECONDS_PERMIN)
+	 {
+            System.out.print(seconds + " seconds is less than 1 minute. ");
+            System.out.println("No conversion was performed");
+         }
+     else if(seconds >= SECONDS_PERMIN && seconds < SECONDS_PERHOUR)
+	 {
+	    minutes = ((float)seconds/SECONDS_PERMIN);
+	    System.out.println(seconds + " seconds = " + formatter.format(minutes) +  "minutes" );
+	 }
+     else if(seconds >= SECONDS_PERHOUR && seconds < SECONDS_PERDAY)
+         {
+	    hours = ((float)seconds/SECONDS_PERHOUR);
+	    System.out.println(seconds + " seconds = " + formatter.format(hours) + "hours");
+	 }
+     else if(seconds >= SECONDS_PERDAY)
+	 {
+	    days = ((float)seconds/SECONDS_PERDAY);
+	    System.out.println(seconds + " seconds = " + formatter.format(days) + "days");
+	 }
+     else 
+         {
+            System.out.println(" The number you entered is Invalid");
+	 }	
+    }
+}
+	
+
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: -1
+The number of seconds entered may not be less than zero.
+No conversion was performed
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: 0
+0 seconds is less than 1 minute. No conversion was performed
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: 59
+59 seconds is less than 1 minute. No conversion was performed
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: 60
+60 seconds = 1.00 minutes
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: 540
+540 seconds = 9.00 minutes
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: 256
+256 seconds = 4.27 minutes
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: 3599
+3599 seconds = 59.98 minutes
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: 3600
+3600 seconds = 1.00 hours
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: 47371
+47371 seconds = 13.16 hours
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: 86399
+86399 seconds = 24.00 hours
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: 86400
+86400 seconds = 1.00 days
+[pgant001@hills ~]$ java TimeCalculator
+Enter number of seconds: 1000000
+1000000 seconds = 11.57 days
+[pgant001@hills ~]$ exit
+exit
+
+Script done on Sun 08 Apr 2012 06:27:41 PM PDT
